@@ -27,8 +27,10 @@ public class ReflectionDemoTest {
     public void getOpenMethodsNamesTest() {
         ArrayList<String> actualList = ReflectionDemo.getOpenMethodsNames(actual);
         Collections.sort(actualList);
-        Collections.addAll(expected, "getAllSuperclassesNames", "getAmountOfHumansInList",
-                "getListOfGettersAndSetters", "getOpenMethodsNames", "getter", "listUseExecute", "setter");
+        Collections.addAll(expected, "equals","getAllSuperclassesNames", "getAmountOfHumansInList","getClass",
+                "getListOfGettersAndSetters", "getOpenMethodsNames", "getter","hashCode", "listUseExecute","notify",
+                "notifyAll","setter","toString","wait","wait","wait");
+        Collections.sort(expected);
         assertEquals(expected, actualList);
 
     }

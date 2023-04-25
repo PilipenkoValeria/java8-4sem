@@ -19,18 +19,17 @@ public class ReflectionDemo {
 
     //2)Для объекта получить список имен его открытых методов.
     public static ArrayList<String> getOpenMethodsNames(Object object) {
-        ArrayList<String> listPublicMethod = new ArrayList<String>();
-        for (Method method : object.getClass().getDeclaredMethods()) {
-            if ((Modifier.isPublic(method.getModifiers()))) {
-                listPublicMethod.add(method.getName());
-            }
+        Method[] methods = object.getClass().getMethods();
+        ArrayList<String> listPublicMethod = new ArrayList<>(methods.length);
+        for (Method method : methods) {
+            listPublicMethod.add(method.getName());
         }
         return listPublicMethod;
     }
 
     //3)Для объекта получить список (в виде списка строк) имен всех его суперклассов до класса Object включительно.
     public static ArrayList<String> getAllSuperclassesNames(Object object) {
-        ArrayList<String> nameOfSuperClass = new ArrayList<String>();
+        ArrayList<String> nameOfSuperClass = new ArrayList<>();
         Class cl = object.getClass().getSuperclass();
         while (!(cl == null)) {
             nameOfSuperClass.add(cl.getSimpleName());
